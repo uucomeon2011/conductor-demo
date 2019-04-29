@@ -1,0 +1,43 @@
+{
+  "name":"myworkflow_test_1",
+  "description":"我的测试流程",
+  "version":1,
+  "tasks":[
+    {
+      "name":"mytask1",
+      "taskReferenceName":"node1",
+      "type":"SIMPLE",
+      "inputParameters":{
+        "ai1":"${workflow.input.wi1}",
+        "ai2":"${workflow.input.wi2}"
+      }
+    },
+    {
+      "name": "my_event_2",
+      "taskReferenceName": "my_event",
+      "inputParameters":{
+        "ai1":"${workflow.input.wi1}",
+        "ai2":"${workflow.input.wi2}"
+      },
+      "sink": "conductor",
+      "type": "WAIT",
+      "startDelay": 0
+    },
+    {
+      "name":"mytask3",
+      "taskReferenceName":"node3",
+      "type":"SIMPLE",
+      "inputParameters":{
+        "bi1":"${my_event.output.ao1}",
+        "bi2":"${my_event.output.ao2}"
+      }
+    }
+  ],
+  "outputParameters":{
+    "ao1":"${my_event.output.ao1}",
+    "ao2":"${my_event.output.ao2}",
+    "bo1":"${node3.output.bo1}",
+    "bo2":"${node3.output.bo2}"
+  },
+  "schemaVersion":2
+}

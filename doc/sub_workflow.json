@@ -1,0 +1,32 @@
+{
+  "name":"my_sub_workflow1",
+  "description":"我的子流程",
+  "version":1,
+  "tasks":[
+    {
+      "name":"my_sub_task1",
+      "taskReferenceName":"node1",
+      "type":"SIMPLE",
+      "inputParameters":{
+        "ai1":"${workflow.input.si1}",
+        "ai2":"${workflow.input.si2}"
+      }
+    },
+    {
+      "name":"my_sub_task2",
+      "taskReferenceName":"node2",
+      "type":"SIMPLE",
+      "inputParameters":{
+        "bi1":"${node1.output.so1}",
+        "bi2":"${node1.output.so2}"
+      }
+    }
+  ],
+  "outputParameters":{
+    "ao1":"${node1.output.so1}",
+    "ao2":"${node1.output.so2}",
+    "bo1":"${node2.output.co1}",
+    "bo2":"${node2.output.co2}"
+  },
+  "schemaVersion":2
+}

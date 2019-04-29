@@ -1,0 +1,19 @@
+{
+  "name": "my_test_event_1",
+  "event": "conductor:my_sub_workflow1:my_event_2",
+  "condition": "1>0",
+  "actions": [
+    {
+      "action": "start_workflow",
+      "start_workflow": {
+        "name": "my_sub_workflow1",
+        "version": 1,
+        "input": {
+          "wi1": "event_1_flow_input_1",
+          "wi2": "event_1_flow_input_2"
+        }
+      }
+    }
+  ],
+  "active": true
+}
